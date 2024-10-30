@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Einladung</title>
+    <style>
+        /* Hintergrund und zentriertes Layout */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ffafbd, #ffc3a0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        /* Container-Stil */
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        /* Titel-Stil */
+        h1 {
+            font-size: 1.8em;
+            color: #ff6f61;
+            margin-bottom: 20px;
+        }
+
+        /* Button-Stil */
+        button {
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        button:hover {
+            background-color: #ff8a75;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: default;
+        }
+
+        /* Eingabefeld für Datum */
+        input[type="date"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        /* Schritte unsichtbar machen */
+        .step {
+            display: none;
+            margin-top: 20px;
+        }
+
+        /* Schritt sichtbar */
+        .step.show {
+            display: block;
+        }
+
+        /* Bild oben hinzufügen */
+        .header-img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://img.icons8.com/doodle/96/000000/romantic.png" alt="Date Icon" class="header-img">
+        <h1>Möchtest du ein Date mit mir?</h1>
+
+        <!-- Schritt 1: Einladung zum Date -->
+        <div id="step1" class="step show">
+            <button onclick="showStep('step2')">💌 Ich möchte dich zu einem Date einladen</button>
+        </div>
+
+        <!-- Schritt 2: Bist du bereit? -->
+        <div id="step2" class="step">
+            <p>Bist du bereit?</p>
+            <button onclick="showStep('step3')">😊 Ja</button>
+            <button onclick="showStep('schade')">🙁 Eher nicht</button>
+        </div>
+
+        <!-- Schritt bei "Nein": Schade -->
+        <div id="schade" class="step">
+            <button disabled>Schade, trotzdem danke für deine Zeit 😔</button>
+        </div>
+
+        <!-- Schritt 3: Ort auswählen -->
+        <div id="step3" class="step">
+            <p>Wähle deinen Ort aus:</p>
+            <button onclick="showStep('step4')">🏠 Bei dir</button>
+            <button onclick="showStep('step4')">🏡 Bei mir</button>
+        </div>
+
+        <!-- Schritt 4: Aktivität auswählen -->
+        <div id="step4" class="step">
+            <p>Was willst du machen?</p>
+            <button onclick="showStep('step5')">🌳 Spazieren und dann eine Pizza essen?</button>
+            <button onclick="showStep('step5')">⛸️ Eislaufen und heißen Kakao trinken</button>
+            <button onclick="showStep('step5')">🎄 Auf den Weihnachtsmarkt schlendern und überzuckert wieder nach Hause gehen</button>
+        </div>
+
+        <!-- Schritt 5: Datum auswählen -->
+        <div id="step5" class="step">
+            <p>Wann möchtest du das Date haben?</p>
+            <input type="date" id="date">
+            <button onclick="showStep('final')">Weiter</button>
+        </div>
+
+        <!-- Letzte Nachricht -->
+        <div id="final" class="step">
+            <p>💖 Danke, dass du dich für ein Date mit mir entschieden hast. Ich freue mich, dich kennenzulernen und bitte dich, mir deine Auswahl einmal mitzuteilen. 💌</p>
+        </div>
+    </div>
+
+    <script>
+        function showStep(stepId) {
+            // Alle Schritte ausblenden
+            document.querySelectorAll('.step').forEach(step => step.classList.remove('show'));
+            // Gewünschten Schritt anzeigen
+            document.getElementById(stepId).classList.add('show');
+        }
+    
+    </script>
+
+</body>
+</html>
